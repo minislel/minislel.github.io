@@ -16,7 +16,7 @@
     <a href="?ddd">ddd</a>
     <a href="?ddd2">ddd2</a>
     <a href="?corn">corn</a>
-    <a href="https://grdoksm.github.io/grd.github.io/">CLICK HERE BOY</a>
+    <a href="https://mcdestroyer123.github.io">CLICK HERE BOY</a>
     <button class="napierdalacz">
       <img src="https://i.imgur.com/31fA5CM.png" width="100" height="100" />
     </button>
