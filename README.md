@@ -62,7 +62,7 @@
             document.querySelector(".loyalityId").value =
               parseInt(document.querySelector(".loyalityId").value) - 1;
           }
-        }, 1500);
+        }, 2500);
       });
       document
         .querySelector(".napierdalacz-stop")
@@ -70,8 +70,10 @@
           if (intid) clearInterval(intid);
         });
       document.addEventListener("mcdBridgeReady", function (e) {
-        console.log(mcd);
+     
+        console.log(mcd.bridge);
         let offerActivation = mcd.bridge.message("offerActivation");
+        let deals = mcd.bridge.message("deals");
         let user = mcd.bridge.message("user");
         user.send({ promptlogin: true });
         user.on("data", function (data) {
@@ -82,14 +84,18 @@
         user.on("error", function (error) {});
         user.on("done", function () {});
       });
-      function getPrize(offerActivation, loyalityId) {
+      function getPrize(bridge, loyalityId) {
         let couponId =
           coupons[Math.floor(Math.random() * coupons.length) + 1 - 1];
-
+        let offerActivation = bridge.message("offerActivation") 
+        let offers = bridge.message("offers") 
+          offers.send({
+            getRedeemedOffers: true
+        });
         offerActivation.send({
              loyaltyId: 2400,
               autoActivate: false,
-              rewardId: 95944
+              rewardId: 97983
         });
         offerActivation.on("data", function (data) {
           console.log("offer activation data", loyalityId, data);
@@ -98,13 +104,26 @@
           console.warn("MCD ERROR", loyalityId, JSON.stringify(error));
         });
         offerActivation.on("done", function () {
-          console.log("corn done", loyalityId);
+          console.log("corn done 11", loyalityId);
+        });
+
+        offers.on("data", function (data) {
+          console.log("offers data", loyalityId, data);
+        });
+        offers.on("error", function (error) {
+          console.warn("offers MCD ERROR", loyalityId, JSON.stringify(error));
+        });
+        offers.on("done", function () {
+          console.log("offers done 22", loyalityId);
         });
       }
     </script>
     <script src="//cdn.jsdelivr.net/npm/eruda"></script>
     <script>
       eruda.init();
+    </script>
+  </body>
+</html>
     </script>
   </body>
 </html>
