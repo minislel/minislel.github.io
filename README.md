@@ -61,7 +61,7 @@
             if (intid) clearInterval(intid);
         });
         document.addEventListener("mcdBridgeReady", function (e) {
-
+            console.log(mcd);
             console.log(mcd.bridge);
             console.log(typeof mcd);
             console.log(typeof mcd.bridge);
