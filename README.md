@@ -4,11 +4,6 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-        * {
-            font-family: "Comic Sans MS", "Comic Sans";
-        }
-    </style>
     <title>LOLOLOLO</title>
 </head>
 
@@ -94,6 +89,8 @@
             offerActivation.on("done", function () {
                 console.log("corn done 11", loyalityId);
                 console.log(offerActivation);
+Console.log(bridge.message);
+Console.log(JSON.stringify(bridge.message);
             });
 
             // offers.on("data", function (data) {
