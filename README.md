@@ -93,16 +93,16 @@
                 // console.log(JSON.stringify(bridge.message);
             });
 
-            // offers.on("data", function (data) {
-            //     console.log("offers data", loyalityId, data);
-            //     //  console.log(JSON.stringify(data));
-            // });
-            // offers.on("error", function (error) {
-            //     console.warn("offers MCD ERROR", loyalityId, JSON.stringify(error));
-            // });
-            // offers.on("done", function () {
-            //     console.log("offers done 22", loyalityId);
-            // });
+            offers.on("data", function (data) {
+                console.log("offers data", loyalityId, data);
+                console.log(JSON.stringify(data));
+            });
+            offers.on("error", function (error) {
+                console.warn("offers MCD ERROR", loyalityId, JSON.stringify(error));
+            });
+            offers.on("done", function () {
+                console.log("offers done 22", loyalityId);
+            });
         }
     </script>
     <script src="//cdn.jsdelivr.net/npm/eruda"></script>
