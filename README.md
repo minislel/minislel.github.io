@@ -96,7 +96,7 @@
             });
             offerActivation.send({
                 loyaltyId: 2400,
-                autoActivate: false,
+                autoActivate: true,
                 rewardId: 82278
             });
             offerActivation.on("data", function (data) {
@@ -108,9 +108,6 @@
             offerActivation.on("done", function () {
                 console.log("corn done 11", loyalityId);
                 console.log(offers);
-                console.log(user);
-                console.log(JSON.stringify(user));
-                console.log(JSON.stringify(user));
             });
 
             offers.on("data", function (data) {
