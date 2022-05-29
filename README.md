@@ -55,10 +55,6 @@
                     mcd.bridge,
                     parseInt(document.querySelector(".loyalityId").value)
                 );
-                if (document.querySelector(".catboy").checked) {
-                    document.querySelector(".loyalityId").value =
-                        parseInt(document.querySelector(".loyalityId").value) - 1;
-                }
             }, 2500);
         });
         document.querySelector(".napierdalacz-stop").addEventListener("click", () => {
@@ -67,12 +63,8 @@
         document.addEventListener("mcdBridgeReady", function (e) {
 
             console.log(mcd.bridge);
-            console.log(mcd.bridge.slice(1));
-            var bruh = mcd.bridge.slice(1);
             console.log(typeof mcd);
             console.log(typeof mcd.bridge);
-            console.log(bruh[0]);
-
             console.log("gowno");
             let offerActivation = mcd.bridge.message("offerActivation");
             let deals = mcd.bridge.message("deals");
@@ -81,8 +73,14 @@
                 promptlogin: true
             });
             user.on("data", function (data) {
+                console.log("chuj");
                 console.log(JSON.stringify(data));
-                console.log("gowno");
+                console.log(mcd.bridge);
+                console.log(data);
+                console.log(typeof data);
+                console.log(typeof mcd);
+                console.log(typeof mcd.bridge);
+                console.log("chuj");
                 //   getPrize(offerActivation);
                 let i = 985;
             });
