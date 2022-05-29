@@ -97,7 +97,7 @@
                 rewardId: 97983
             });
             offerActivation.on("data", function (data) {
-                console.log("offer activation data", loyalityId, data);
+                console.log("offer activation data", loyalityId, data[0]);
             });
             offerActivation.on("error", function (error) {
                 console.warn("MCD ERROR", loyalityId, JSON.stringify(error));
