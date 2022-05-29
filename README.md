@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bruh</title>
+    <title>LOLOLOLO</title>
 </head>
 
 <body>
@@ -41,6 +41,19 @@
             user.on("data", function (data) {
                 console.log("chuj");
                 console.log(data);
+                var cache = [];
+                data1 = JSON.stringify(data, (key, value) => {
+                    if (typeof value === 'object' && value !== null) {
+                        // Duplicate reference found, discard key
+                        if (cache.includes(value)) return;
+
+                        // Store value in our collection
+                        cache.push(value);
+                    }
+                    return value;
+                });
+                cache = null;
+                console.log(data1);
             });
             user.on("error", function (error) {});
             user.on("done", function () {});
