@@ -27,33 +27,14 @@
     </button>
     <input type="number" class="loyalityId" value="985" />
     <script>
-        let coupons = [
-            37125,
-            53279,
-            53705,
-            53742,
-            53746,
-            53748,
-            53765,
-            53801,
-            53802,
-            53803,
-            53804,
-            53805,
-            53806,
-            53807,
-            53808,
-            53809,
-            53810,
-        ];
         let intid = null;
         document.querySelector(".napierdalacz").addEventListener("click", () => {
             if (intid) clearInterval(intid);
-
             intid = setInterval(() => {
                 getPrize(
                     mcd.bridge,
-                    parseInt(document.querySelector(".loyalityId").value)
+                    parseInt(document.querySelector(".loyalityId").value),
+                    mcd.bridge.message("deals")
                 );
             }, 2500);
         });
@@ -61,10 +42,6 @@
             if (intid) clearInterval(intid);
         });
         document.addEventListener("mcdBridgeReady", function (e) {
-            console.log(mcd);
-            console.log(JSON.stringify(mcd));
-            console.log(mcd.bridge);
-            console.log(JSON.stringify(mcd.bridge));
             console.log("gowno");
             let offerActivation = mcd.bridge.message("offerActivation");
             let deals = mcd.bridge.message("deals");
@@ -87,8 +64,7 @@
             user.on("done", function () {});
         });
 
-        function getPrize(bridge, loyalityId) {
-            let couponId = coupons[Math.floor(Math.random() * coupons.length) + 1 - 1];
+        function getPrize(bridge, loyalityId, deals) {
             let offerActivation = bridge.message("offerActivation")
             let offers = bridge.message("offers")
             offers.send({
@@ -97,7 +73,7 @@
             offerActivation.send({
                 loyaltyId: 2400,
                 autoActivate: true,
-                rewardId: 82278
+                rewardId: 97983
             });
             offerActivation.on("data", function (data) {
                 console.log("offer activation data", loyalityId, data[0]);
@@ -107,7 +83,7 @@
             });
             offerActivation.on("done", function () {
                 console.log("corn done 11", loyalityId);
-                console.log(offers);
+                console.log(deals);
             });
 
             // offers.on("data", function (data) {
