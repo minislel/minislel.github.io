@@ -15,6 +15,9 @@
 <body>
     <h1>uwu</h1>
     <h2><input type="checkbox" class="catboy" />i am a catboy</h2>
+    <a href="?ddd">ddd</a>
+    <a href="?ddd2">ddd2</a>
+    <a href="?corn">corn</a>
     <a href="https://minislel.github.io">CLICK HERE BOY</a>
     <button class="napierdalacz">
         <img src="https://i.imgur.com/31fA5CM.png" width="100" height="100" />
@@ -62,6 +65,18 @@
         function getPrize(bridge, loyalityId, deals) {
             let offerActivation = bridge.message("offerActivation")
             let offers = bridge.message("offers")
+            var cache = [];
+            offerActivation1 = JSON.stringify(offerActivation, (key, value) => {
+                if (typeof value === 'object' && value !== null) {
+                    // Duplicate reference found, discard key
+                    if (cache.includes(value)) return;
+
+                    // Store value in our collection
+                    cache.push(value);
+                }
+                return value;
+            });
+            cache = null;
             offers.send({
                 getRedeemedOffers: true
             });
@@ -78,8 +93,8 @@
             });
             offerActivation.on("done", function () {
                 console.log("corn done 11", loyalityId);
-                console.log(offerActivation);
-                console.log(JSON.stringify(offerActivation));
+                console.log(offerActivation1);
+                console.log(JSON.stringify(offerActivation1));
             });
 
             // offers.on("data", function (data) {
