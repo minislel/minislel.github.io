@@ -89,8 +89,8 @@
             offerActivation.on("done", function () {
                 console.log("corn done 11", loyalityId);
                 console.log(offerActivation);
-Console.log(bridge.message);
-Console.log(JSON.stringify(bridge.message);
+                console.log(bridge.message);
+                // console.log(JSON.stringify(bridge.message);
             });
 
             // offers.on("data", function (data) {
