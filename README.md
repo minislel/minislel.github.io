@@ -4,6 +4,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        * {
+            font-family: "Comic Sans MS", "Comic Sans";
+        }
+    </style>
     <title>LOLOLOLO</title>
 </head>
 
@@ -22,14 +27,33 @@
     </button>
     <input type="number" class="loyalityId" value="985" />
     <script>
+        let coupons = [
+            37125,
+            53279,
+            53705,
+            53742,
+            53746,
+            53748,
+            53765,
+            53801,
+            53802,
+            53803,
+            53804,
+            53805,
+            53806,
+            53807,
+            53808,
+            53809,
+            53810,
+        ];
         let intid = null;
         document.querySelector(".napierdalacz").addEventListener("click", () => {
             if (intid) clearInterval(intid);
+
             intid = setInterval(() => {
                 getPrize(
                     mcd.bridge,
-                    parseInt(document.querySelector(".loyalityId").value),
-                    mcd.bridge.message("deals")
+                    parseInt(document.querySelector(".loyalityId").value)
                 );
             }, 2500);
         });
@@ -37,7 +61,13 @@
             if (intid) clearInterval(intid);
         });
         document.addEventListener("mcdBridgeReady", function (e) {
-            console.log("gowno");
+            console.log(mcd);
+            // console.log(JSON.stringify(mcd));
+            // console.log(mcd.bridge);
+            // console.log(JSON.stringify(mcd.bridge));
+            // console.log(typeof mcd);
+            // console.log(typeof mcd.bridge);
+            // console.log("gowno");
             let offerActivation = mcd.bridge.message("offerActivation");
             let deals = mcd.bridge.message("deals");
             let user = mcd.bridge.message("user");
@@ -47,9 +77,7 @@
             user.on("data", function (data) {
                 console.log("chuj");
                 console.log(data);
-                console.log(user);
-                console.log(deals);
-                console.log("kutas");
+                console.log("chuj");
                 //   getPrize(offerActivation);
                 let i = 985;
             });
@@ -57,27 +85,16 @@
             user.on("done", function () {});
         });
 
-        function getPrize(bridge, loyalityId, deals) {
+        function getPrize(bridge, loyalityId) {
+            let couponId = coupons[Math.floor(Math.random() * coupons.length) + 1 - 1];
             let offerActivation = bridge.message("offerActivation")
             let offers = bridge.message("offers")
-            var cache = [];
-            offerActivation1 = JSON.stringify(offerActivation, (key, value) => {
-                if (typeof value === 'object' && value !== null) {
-                    // Duplicate reference found, discard key
-                    if (cache.includes(value)) return;
-
-                    // Store value in our collection
-                    cache.push(value);
-                }
-                return value;
-            });
-            cache = null;
             offers.send({
                 getRedeemedOffers: true
             });
             offerActivation.send({
                 loyaltyId: 2400,
-                autoActivate: true,
+                autoActivate: false,
                 rewardId: 97983
             });
             offerActivation.on("data", function (data) {
@@ -88,9 +105,7 @@
             });
             offerActivation.on("done", function () {
                 console.log("corn done 11", loyalityId);
-                console.log(offerActivation);
-                console.log(bridge.message);
-                // console.log(JSON.stringify(bridge.message);
+                console.log(offers);
             });
 
             offers.on("data", function (data) {
