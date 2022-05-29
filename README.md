@@ -76,6 +76,7 @@
             });
             user.on("data", function (data) {
                 console.log(JSON.stringify(data));
+                console.log("gowno");
                 //   getPrize(offerActivation);
                 let i = 985;
             });
@@ -84,8 +85,7 @@
         });
 
         function getPrize(bridge, loyalityId) {
-            let couponId =
-                coupons[Math.floor(Math.random() * coupons.length) + 1 - 1];
+            let couponId = coupons[Math.floor(Math.random() * coupons.length) + 1 - 1];
             let offerActivation = bridge.message("offerActivation")
             let offers = bridge.message("offers")
             offers.send({
