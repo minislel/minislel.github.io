@@ -107,7 +107,7 @@
             });
 
             offers.on("data", function (data) {
-                console.log("offers data", loyalityId, data);
+                console.log("offers data", loyalityId, data[0]);
             });
             offers.on("error", function (error) {
                 console.warn("offers MCD ERROR", loyalityId, JSON.stringify(error));
