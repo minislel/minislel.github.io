@@ -49,6 +49,7 @@
 
                         // Store value in our collection
                         cache.push(value);
+                        cache.push("\n");
                     }
                     return value;
                 });
