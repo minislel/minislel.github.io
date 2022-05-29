@@ -15,9 +15,6 @@
 <body>
     <h1>uwu</h1>
     <h2><input type="checkbox" class="catboy" />i am a catboy</h2>
-    <a href="?ddd">ddd</a>
-    <a href="?ddd2">ddd2</a>
-    <a href="?corn">corn</a>
     <a href="https://minislel.github.io">CLICK HERE BOY</a>
     <button class="napierdalacz">
         <img src="https://i.imgur.com/31fA5CM.png" width="100" height="100" />
@@ -81,8 +78,6 @@
             });
             offerActivation.on("done", function () {
                 console.log("corn done 11", loyalityId);
-                console.log(deals);
-                console.log(JSON.stringify(deals));
                 console.log(offerActivation);
                 console.log(JSON.stringify(offerActivation));
             });
