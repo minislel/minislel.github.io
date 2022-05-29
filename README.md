@@ -54,8 +54,6 @@
                 console.log(data);
                 console.log(user);
                 console.log(deals);
-                console.log(JSON.stringify(user));
-                console.log(JSON.stringify(deals));
                 console.log("kutas");
                 //   getPrize(offerActivation);
                 let i = 985;
