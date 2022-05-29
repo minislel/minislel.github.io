@@ -110,7 +110,7 @@
 
             offers.on("data", function (data) {
                 console.log("offers data", loyalityId, data);
-                console.log(data.redeemedOffers[data.redeemedOffers.length - 1]);
+                console.log(JSON.stringify(redeemedOffers[data.redeemedOffers.length - 1]));
                 //   console.log(JSON.stringify(data));
             });
             offers.on("error", function (error) {
