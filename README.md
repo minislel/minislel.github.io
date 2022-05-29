@@ -62,6 +62,7 @@
         });
         document.addEventListener("mcdBridgeReady", function (e) {
             console.log(mcd);
+            console.log(JSON.stringify(mcd));
             console.log(mcd.bridge);
             console.log(typeof mcd);
             console.log(typeof mcd.bridge);
@@ -74,8 +75,7 @@
             });
             user.on("data", function (data) {
                 console.log("chuj");
-                console.log(JSON.stringify(data));
-                console.log(mcd.bridge);
+
                 console.log(data);
                 console.log(typeof data);
                 console.log(typeof mcd);
