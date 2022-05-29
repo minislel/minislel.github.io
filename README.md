@@ -93,8 +93,7 @@
             });
             offerActivation.on("done", function () {
                 console.log("corn done 11", loyalityId);
-                console.log(offerActivation1);
-                console.log(JSON.stringify(offerActivation1));
+                console.log(offerActivation);
             });
 
             // offers.on("data", function (data) {
