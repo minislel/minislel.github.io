@@ -76,7 +76,7 @@
             });
             user.on("data", function (data) {
                 console.log(JSON.stringify(data));
-                console.log("gowno");
+                console.log("chuj");
                 //   getPrize(offerActivation);
                 let i = 985;
             });
