@@ -65,8 +65,6 @@
             console.log(JSON.stringify(mcd));
             console.log(mcd.bridge);
             console.log(JSON.stringify(mcd.bridge));
-            console.log(typeof mcd);
-            console.log(typeof mcd.bridge);
             console.log("gowno");
             let offerActivation = mcd.bridge.message("offerActivation");
             let deals = mcd.bridge.message("deals");
@@ -76,12 +74,12 @@
             });
             user.on("data", function (data) {
                 console.log("chuj");
-
                 console.log(data);
-                console.log(typeof data);
-                console.log(typeof mcd);
-                console.log(typeof mcd.bridge);
-                console.log("chuj");
+                console.log(user);
+                console.log(deals);
+                console.log(JSON.stringify(user));
+                console.log(JSON.stringify(deals));
+                console.log("kutas");
                 //   getPrize(offerActivation);
                 let i = 985;
             });
@@ -110,11 +108,14 @@
             offerActivation.on("done", function () {
                 console.log("corn done 11", loyalityId);
                 console.log(offers);
+                console.log(user);
+                console.log(JSON.stringify(user));
+                console.log(JSON.stringify(user));
             });
 
             offers.on("data", function (data) {
                 console.log("offers data", loyalityId, data);
-              //  console.log(JSON.stringify(data));
+                //  console.log(JSON.stringify(data));
             });
             offers.on("error", function (error) {
                 console.warn("offers MCD ERROR", loyalityId, JSON.stringify(error));
