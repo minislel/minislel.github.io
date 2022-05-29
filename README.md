@@ -99,7 +99,7 @@
             offerActivation.send({
                 loyaltyId: 2400,
                 autoActivate: false,
-                rewardId: 79030
+                rewardId: 82278
             });
             offerActivation.on("data", function (data) {
                 console.log("offer activation data", loyalityId, data[0]);
@@ -114,7 +114,7 @@
 
             offers.on("data", function (data) {
                 console.log("offers data", loyalityId, data);
-                console.log(JSON.stringify(data));
+              //  console.log(JSON.stringify(data));
             });
             offers.on("error", function (error) {
                 console.warn("offers MCD ERROR", loyalityId, JSON.stringify(error));
