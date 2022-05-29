@@ -110,11 +110,11 @@
             offerActivation.on("done", function () {
                 console.log("corn done 11", loyalityId);
                 console.log(offers);
-                console.log(JSON.stringify(offers));
             });
 
             offers.on("data", function (data) {
-                console.log("offers data", loyalityId, data[0]);
+                console.log("offers data", loyalityId, data);
+                console.log(JSON.stringify(data));
             });
             offers.on("error", function (error) {
                 console.warn("offers MCD ERROR", loyalityId, JSON.stringify(error));
