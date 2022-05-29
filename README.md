@@ -69,7 +69,10 @@
             console.log(mcd.bridge);
             console.log(mcd.bridge.slice(1));
             var bruh = mcd.bridge.slice(1);
+            console.log(typeof mcd);
+            console.log(typeof mcd.bridge);
             console.log(bruh[0]);
+
             console.log("gowno");
             let offerActivation = mcd.bridge.message("offerActivation");
             let deals = mcd.bridge.message("deals");
