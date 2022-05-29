@@ -64,6 +64,7 @@
             console.log(mcd);
             console.log(JSON.stringify(mcd));
             console.log(mcd.bridge);
+            console.log(JSON.stringify(mcd.bridge));
             console.log(typeof mcd);
             console.log(typeof mcd.bridge);
             console.log("gowno");
