@@ -67,6 +67,9 @@
         document.addEventListener("mcdBridgeReady", function (e) {
 
             console.log(mcd.bridge);
+            console.log(mcd.bridge.slice(1));
+            var bruh = mcd.bridge.slice(1);
+            console.log(bruh[0]);
             console.log("gowno");
             let offerActivation = mcd.bridge.message("offerActivation");
             let deals = mcd.bridge.message("deals");
@@ -76,7 +79,7 @@
             });
             user.on("data", function (data) {
                 console.log(JSON.stringify(data));
-                console.log("chuj");
+                console.log("gowno");
                 //   getPrize(offerActivation);
                 let i = 985;
             });
