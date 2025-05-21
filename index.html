@@ -19,18 +19,68 @@
         padding: 1em 2em;
         margin-top: 1em;
       }
+      #pdf-container {
+        border: 1px solid #ccc;
+        max-height: 80vh;
+        overflow-y: auto;
+      }
+      #pdf-container canvas {
+        margin: auto;
+      }
     </style>
   </head>
   <body>
     <h1>Regulamin</h1>
-    <iframe
-      src="https://docs.google.com/gview?embedded=true&url=https://minislel.github.io/regulamin.pdf"
+    <!-- <iframe
+      src="https://docs.google.com/viewer?url=https://minislel.github.io/regulamin.pdf&embedded=true"
       frameborder="0"
-    ></iframe>
+    ></iframe> -->
+    <div id="pdf-container">
+      <!-- canvasy będą dopisane tu dynamicznie -->
+    </div>
     <br />
     <button onclick="akceptuj()">✅ Akceptuję regulamin</button>
     <p>Liczba akceptacji: <span id="licznik">...</span></p>
 
     <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.8.162/pdf.min.js"></script>
+    <script>
+      // Ustawienie worker-a dla PDF.js
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.8.162/pdf.worker.min.js";
+
+      const url = "regulamin.pdf"; // ścieżka do pliku PDF
+      const container = document.getElementById("pdf-container");
+
+      pdfjsLib
+        .getDocument(url)
+        .promise.then((pdfDoc) => {
+          const total = pdfDoc.numPages;
+          // Renderuj każdą stronę
+          for (let pageNum = 1; pageNum <= total; pageNum++) {
+            pdfDoc.getPage(pageNum).then((page) => {
+              const scale = 1.2;
+              const viewport = page.getViewport({ scale });
+              // stwórz nowy canvas dla tej strony
+              const canvas = document.createElement("canvas");
+              canvas.width = viewport.width;
+              canvas.height = viewport.height;
+              canvas.style.display = "block";
+              canvas.style.marginBottom = "1em";
+              container.appendChild(canvas);
+              // renderuj stronę
+              page
+                .render({ canvasContext: canvas.getContext("2d"), viewport })
+                .promise.catch((err) =>
+                  console.error(`Błąd renderowania strony ${pageNum}:`, err)
+                );
+            });
+          }
+        })
+        .catch((err) => {
+          container.innerText = "Nie udało się załadować regulaminu.";
+          console.error(err);
+        });
+    </script>
   </body>
 </html>
